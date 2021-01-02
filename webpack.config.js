@@ -24,14 +24,14 @@ module.exports = {
     new webpack.BannerPlugin({
       banner: `// ==UserScript==
       // @name         esa.io Referenced Copy Top
-      // @namespace    https://github.com/fushihara/xxxxxx
+      // @namespace    https://github.com/fushihara/esa-io-referenced-copy-top
       // @match        https://*.esa.io/posts/*
       // @description  esa.ioのReferenced をページのヘッダー部分にも表示する
       // @version      ${process.env.npm_package_version}
       // @grant        none
       // @license      MIT
-      // @source       https://github.com/fushihara/xxxxx
-      // @homepage     https://greasyfork.org/ja/scripts/xxxxxx
+      // @source       https://github.com/fushihara/esa-io-referenced-copy-top
+      // @homepage     https://greasyfork.org/ja/scripts/419549
       // @noframes
       // ==/UserScript==`
         .split("\n")
