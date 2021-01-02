@@ -13,9 +13,9 @@ function main() {
     list.push({href: link, title: innerText});
   }
   insertStyleRule();
+  const div = document.createElement("div");
+  div.classList.add(randomId);
   if (0 < list.length) {
-    const div = document.createElement("div");
-    div.classList.add(randomId);
     div.append(getSpanElement("Referenced From"));
     for (let v of list) {
       div.append(getAnchorElement(v.title, v.href));
@@ -23,12 +23,18 @@ function main() {
         div.append(getSpanElement("/"));
       }
     }
-    document.querySelector(".posts-title").insertBefore(div, document.querySelector(".post-title"));
+  } else {
+    div.append(getSpanElement("Referenced From"));
+    div.append(getSpanElement("None", "lightgray"));
   }
+  document.querySelector(".posts-title").insertBefore(div, document.querySelector(".post-title"));
 }
-function getSpanElement(innerText: string) {
+function getSpanElement(innerText: string, className = "") {
   const e = document.createElement("span");
   e.innerText = innerText;
+  if (className != "") {
+    e.classList.add(className);
+  }
   return e;
 }
 function getAnchorElement(innerText: string, href: string) {
@@ -46,4 +52,5 @@ function insertStyleRule() {
   document.head.appendChild(styleEl);
   styleEl.sheet.insertRule(`.${randomId} { word-break: break-word;}`);
   styleEl.sheet.insertRule(`.${randomId} > * { margin:0 2px;}`);
+  styleEl.sheet.insertRule(`.${randomId} > .lightgray { color:lightgray;}`);
 }
